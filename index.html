@@ -1,0 +1,30 @@
+<!doctypehtml>
+<html>
+  <head>
+    <script defer>
+      /**
+       * Original script
+       */
+        const el = e => document.getElementById(e);
+      const XRcycle=async function XRcycle(){
+        try{
+            var XR=new XMLHttpRequest();
+            XR.open("GET","https://api.hypixel.net/v2/resources/skyblock/bingo")
+            XR.send();
+            var t=await XR.responseText;
+            return JSON.parse(t);
+        } catch (e) {
+            return {
+                success: false,
+                caught: e,
+            };
+        }
+      }
+      el("xhr_create").addEventListener("click",e => {XRcycle().then(t => {el("out1").textContent = t})})
+    </script>
+  </head>
+  <body>
+    <div id="xhr_create">XR Cycle</div>
+      <p id="out1"></p>
+  </body>
+</html>
