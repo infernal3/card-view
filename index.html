@@ -20,11 +20,16 @@
             };
         }
       }
+      let r=[];
+      r.push(document.create("div"));
+      r.push(document.create("button"));
+      r[1].id="xhr_create";
+      r[0].append(r[1]);
+      document.body.append(r[0]);
       el("xhr_create").addEventListener("click",e => {XRcycle().then(t => {el("out1").textContent = t})})
     </script>
   </head>
   <body>
-    <div>Card (WIP)<br><button id="xhr_create">Open and send request</button></div>
       <p id="out1"></p>
   </body>
 </html>
