@@ -2,35 +2,23 @@
 <html>
   <head>
     <script defer>
-      /**
-       * Original script
-       */
+        /**
+         * Original script
+         */
         const el = e => document.getElementById(e);
-      const XRcycle=async function XRcycle(){
-        try{
-            var XR=new XMLHttpRequest();
-            XR.open("GET","https://api.hypixel.net/v2/resources/skyblock/bingo")
-            XR.send();
-            var t=await XR.responseText;
-            return JSON.parse(t);
-        } catch (e) {
-            return {
-                success: false,
-                caught: e,
-            };
+        const app = document.createElement("div");
+        app.id="root";
+        for(let i=0;i<6;i++){
+            let str = '<div class="Ab">';
+            for(let j=0;j<9;j++){
+                str += `<div class="Ac" id="r${i}c${j}">(${i}, ${j})</div>`
+            }
+            app.innerHTML += str + "</div>";
         }
-      }
-      let r=[];
-      r.push(document.createElement("div"));
-      r.push(document.createElement("button"));
-      r[1].id="xhr_create";
-      r[1].textContent="Send XMLHttpRequest";
-      r[0].append(r[1]);
-      document.body.append(r[0]);
-      el("xhr_create").addEventListener("click",e => {XRcycle().then(t => {el("out1").textContent = t})})
+        document.body.append(app);
     </script>
   </head>
   <body>
-      <p id="out1"></p>
+      
   </body>
 </html>
