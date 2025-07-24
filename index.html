@@ -15,7 +15,7 @@
             }
             app.innerHTML += str + "</div>";
         }
-        document.body.append(app);
+        window.addEventListener("load",e=>{document.body.append(app);});
     </script>
   </head>
 </html>
