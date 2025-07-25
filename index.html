@@ -37,8 +37,8 @@
         const el = e => document.getElementById(e);
         const app = document.createElement("div");
         const Tab1 = function() {// Reference Video Hash: 6rXQR6wWB8I
-            for(let i=2;i<7;i++){
-                for(let j=1;j<4;j++){
+            for(let j=2;j<7;j++){
+                for(let i=1;i<4;i++){
                     el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
                     el(`${i}${j}`).addEventListener("click",e=>{
                         this.classList.toggle("Bb");
