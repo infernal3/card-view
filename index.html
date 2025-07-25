@@ -57,6 +57,7 @@
                 for(let j=0;j<9;j++){
                     el(`${i}${j}`).className = "Ac Ba";
                     el(`${i}${j}`).removeEventListener("click",Tab1Helper);
+                    el(`${i}${j}`).removeEventListener("click",Tab2Helper);
                     el(`${i}${j}`).textContent = "";
                 }
             }
@@ -84,7 +85,7 @@
                 for(let j=1;j<8;j++){
                     el(`${i}${j}`).className = "Ac Bc";
                     el(`${i}${j}`).textContent = arr[k]+1;
-                    el(`${i}${j}`).addEventListener("click",Tab1Helper);
+                    el(`${i}${j}`).addEventListener("click",Tab2Helper);
                     k++;
                 }
             }
