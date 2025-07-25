@@ -104,6 +104,7 @@
             }
         }
         const Tab3SetRedBar = function() {
+            Tab0();
             for(let i=1;i<5;i++){
                 for(let j=1;j<6;j++){
                     el(`${i}${j}`).className = "Ac Bf";
@@ -131,7 +132,6 @@
             el(`${Tab3Index}${Tab3ConvertIndex3(Tab3Index3)}`).className = "Ac Bb";
         }
         const Tab3 = function() {
-            Tab0();
             tab = 3;
             Tab3Index = 1;
             Tab3SetRedBar();
