@@ -36,11 +36,11 @@
          */
         const el = e => document.getElementById(e);
         const app = document.createElement("div");
-        const Tab1 = function() {// Reference Video Hash: 6rXQR6wWB8I
+        const Tab1 = function() {// Reference Hash: 6rXQR6wWB8I
             for(let j=2;j<7;j++){
                 for(let i=1;i<4;i++){
                     el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
-                    el(`${i}${j}`).addEventListener("click",e=>{
+                    el(`${i}${j}`).addEventListener("click",function (){
                         this.classList.toggle("Bb");
                         this.classList.toggle("Bc");
                     });
