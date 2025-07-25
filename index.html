@@ -92,6 +92,25 @@
                 }
             }
         }
+        const Tab3SetRedBar = function() {
+            for(let i=1;i<5;i++){
+                for(let j=1;j<6;j++){
+                    el(`${i}${j}`).className = "Ac Bf";
+                }
+            }
+            for(let j=1;j<6;j++){
+                el(`${Tab3Index}${j}`).className = "Ac Bc";
+            }
+            Tab3Index2 = parseInt(Math.random() * 5) + 1;
+            el(`${Tab3Index2}0`).className = "Ac Be";
+            el(`${Tab3Index2}5`).className = "Ac Be";
+        }
+        const Tab3 = function() {
+            Tab0();
+            tab = 3;
+            Tab3Index = 1;
+            Tab3SetRedBar();
+        }
         app.id="root";
         for(let i=0;i<6;i++){
             let str = '<div class="Ab">';
@@ -107,10 +126,12 @@
             <button id="tab0">(Reset)</button>
             <button id="tab1">Terminal 1</button>
             <button id="tab2">Terminal 2</button>
+            <button id="tab3">Terminal 3</button>
             `;
             el("tab0").addEventListener("click",()=>{Tab0();});
             el("tab1").addEventListener("click",()=>{Tab1();});
             el("tab2").addEventListener("click",()=>{Tab2();});
+            el("tab3").addEventListener("click",()=>{Tab3();});
         });
     </script>
   </head>
