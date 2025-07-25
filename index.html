@@ -29,6 +29,9 @@
       div.Be{
         background:#C74EBD; /*MelodyBar*/
       }
+      div.Bf{
+        background:#F0F0F0; /*MelodyInactive*/
+      }
     </style>
     <script defer>
         /**
@@ -40,11 +43,36 @@
             this.classList.toggle("Bb");
             this.classList.toggle("Bc");
         }
+        const Tab0 = function() { // reset button
+            for(let i=0;i<6;i++){
+                for(let j=0;j<9;j++){
+                    el(`${i}${j}`).className = "Ac Ba";
+                    el(`${i}${j}`).removeEventListener("click",Tab1Helper);
+                }
+            }
+        }
         const Tab1 = function() {// Reference Hash: 6rXQR6wWB8I
-            for(let j=2;j<7;j++){
-                for(let i=1;i<4;i++){
+            for(let i=1;i<4;i++){
+                for(let j=2;j<7;j++){
                     el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
                     el(`${i}${j}`).addEventListener("click",Tab1Helper);
+                }
+            }
+        }
+        const Tab2 = function() {
+            let arr=[],temp=[0,1,2,3,4,5,6,7,8,9,10,11,12,13];
+            while(temp.length>0){
+                arr.push(temp.splice(Math.random()*14,1)[0]);
+                console.log(arr);
+            }
+            console.log(arr);
+            let k=0;
+            for(let i=2;i<4;i++){
+                for(let j=1;j<8;j++){
+                    el(`${i}${j}`).className = "Ac Bc";
+                    el(`${i}${j}`).textContent = arr[k]+1;
+                    el(`${i}${j}`).addEventListener("click",Tab1Helper);
+                    k++;
                 }
             }
         }
@@ -52,15 +80,21 @@
         for(let i=0;i<6;i++){
             let str = '<div class="Ab">';
             for(let j=0;j<9;j++){
-                str += `<div class="Ac Ba" id="${i}${j}">(${i}, ${j})</div>`
+                str += `<div class="Ac Ba" id="${i}${j}"></div>`
             }
             app.innerHTML += str + "</div>";
         }
         app.innerHTML += '<div id="panel"></div>';
         window.addEventListener("load",e=>{
             document.body.append(app);
-            el("panel").innerHTML += `<button id="tab1">Terminals</button>`;
-            el("tab1").addEventListener("click",()=>{Tab1();})
+            el("panel").innerHTML += `
+            <button id="tab0">(Reset)</button>
+            <button id="tab1">Terminal 1</button>
+            <button id="tab2">Terminal 2</button>
+            `;
+            el("tab0").addEventListener("click",()=>{Tab0();});
+            el("tab1").addEventListener("click",()=>{Tab1();});
+            el("tab2").addEventListener("click",()=>{Tab2();});
         });
     </script>
   </head>
