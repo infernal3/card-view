@@ -201,7 +201,11 @@
             }
             app.innerHTML += str + "</div>";
         }
-        app.innerHTML = '<h1>Terminals Simulator (Card View)</h1><div id="panel"></div>' + app.innerHTML;
+        app.innerHTML = `<h1>
+                           Terminals Simulator (Card View)
+                         </h1>
+                         <div id="panel"></div>
+                         <div id="timer"></div>` + app.innerHTML;
         window.addEventListener("load",e=>{
             document.body.append(app);
             el("panel").innerHTML += `
