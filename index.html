@@ -49,11 +49,14 @@
     </style>
     <script defer>
         /**
-         * Original script
+         * Original script by infernal3
          */
         const el = e => document.getElementById(e);
         var tab = 0;
         const app = document.createElement("div");
+        const SetClassOf = function(x, y, newClass) {
+            el(`${x}${y}`).className = newClass;
+        }
         const PreventDefault = function(e) {
             e.preventDefault();
         }
@@ -107,21 +110,21 @@
                 }
             }
         }
-        const Tab0 = function() { // reset button
+        const Tab0 = function() {
             tab = 0;
             for(let i=0;i<6;i++){
                 for(let j=0;j<9;j++){
-                    el(`${i}${j}`).className = "Ac Ba";
+                    SetClassOf(i, j, "Ac Ba");
                     el(`${i}${j}`).textContent = "";
                 }
             }
         }
-        const Tab1 = function() {// Reference Hash: 6rXQR6wWB8I
+        const Tab1 = function() {
             Tab0();
             tab = 1;
             for(let i=1;i<4;i++){
                 for(let j=2;j<7;j++){
-                    el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
+                    SetClassOf(i, j, Math.random() < 0.25 ? "Ac Bb" : "Ac Bc");
                     el(`${i}${j}`).addEventListener("click",Tab1Helper);
                 }
             }
@@ -137,7 +140,7 @@
             let k=0;
             for(let i=2;i<4;i++){
                 for(let j=1;j<8;j++){
-                    el(`${i}${j}`).className = "Ac Bc Ca";
+                    SetClassOf(i, j, "Ac Bc Ca");
                     el(`${i}${j}`).textContent = arr[k]+1;
                     el(`${i}${j}`).addEventListener("click",Tab2Helper);
                     k++;
@@ -147,15 +150,15 @@
         const Tab3SetRedBar = function() {
             for(let i=1;i<5;i++){
                 for(let j=1;j<6;j++){
-                    el(`${i}${j}`).className = "Ac Bf";
+                    SetClassOf(i, j, "Ac Bf");
                 }
             }
             Tab3Index2 = parseInt(Math.random() * 5) + 1;
             for(let i=0;i<6;i+=5){
                 for(let j=1;j<6;j++){
-                    el(`${i}${j}`).className = "Ac Ba";
+                    SetClassOf(i, j, "Ac Ba");
                 }
-                el(`${i}${Tab3Index2}`).className = "Ac Be";
+                SetClassOf(i, Tab3Index2, "Ac Be");
             }
             for(let i=1;i<5;i++){
                 el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
@@ -171,9 +174,9 @@
         }
         const Tab3SetGreenBar = function(){
             for(let j=1;j<6;j++){
-                el(`${Tab3Index}${j}`).className = "Ac Bc";
+                SetClassOf(Tab3Index, j, "Ac Bc");
             }
-            el(`${Tab3Index}${Tab3ConvertIndex3(Tab3Index3)}`).className = "Ac Bb";
+            SetClassOf(Tab3Index, Tab3ConvertIndex3(Tab3Index3), "Ac Bb");
         }
         const Tab3 = function() {
             Tab0();
@@ -187,7 +190,7 @@
             let arr = ["c", "g", "h", "d", "i"];
             for(let i=1;i<4;i++){
                 for(let j=3;j<6;j++){
-                    el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
+                    SetClassOf(i, j, "Ac B" + arr[parseInt(Math.random() * 5)]);
                     el(`${i}${j}`).addEventListener("click",Tab4Helper);
                     el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2);
                 }
