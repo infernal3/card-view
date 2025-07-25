@@ -48,6 +48,7 @@
                 for(let j=0;j<9;j++){
                     el(`${i}${j}`).className = "Ac Ba";
                     el(`${i}${j}`).removeEventListener("click",Tab1Helper);
+                    el(`${i}${j}`).textContent = "";
                 }
             }
         }
@@ -62,7 +63,7 @@
         const Tab2 = function() {
             let arr=[],temp=[0,1,2,3,4,5,6,7,8,9,10,11,12,13];
             while(temp.length>0){
-                arr.push(temp.splice(Math.random()*14,1)[0]);
+                arr.push(temp.splice(Math.random()*temp.length,1)[0]);
                 console.log(arr);
             }
             console.log(arr);
