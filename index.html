@@ -54,6 +54,9 @@
         const el = e => document.getElementById(e);
         var tab = 0;
         const app = document.createElement("div");
+        const PreventDefault = function(e) {
+            e.preventDefault();
+        }
         const Tab1Helper = function() {
             if(tab === 1){
                 this.classList.toggle("Bb");
@@ -173,6 +176,7 @@
                 for(let j=3;j<6;j++){
                     el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
                     el(`${i}${j}`).addEventListener("click",Tab4Helper);
+                    el(`${i}${j}`).addEventListener("contextmenu",PreventDefault);
                 }
             }
         }
