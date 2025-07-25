@@ -101,16 +101,24 @@
                     el(`${i}${j}`).className = "Ac Bf";
                 }
             }
-            for(let j=1;j<6;j++){
-                el(`${Tab3Index}${j}`).className = "Ac Bc";
-            }
             Tab3Index2 = parseInt(Math.random() * 5) + 1;
             el(`0${Tab3Index2}`).className = "Ac Be";
             el(`5${Tab3Index2}`).className = "Ac Be";
             for(let i=1;i<5;i++){
-                el(`${i}7`).innerHTML = `<img width=48 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
+                el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
             }
-            el(`${Tab3Index}7`).innerHTML = `<img width=48 src="./TerracottaGreen.webp" alt="Green Terracotta"/>`;
+            el(`${Tab3Index}7`).innerHTML = `<img width=44 src="./TerracottaGreen.webp" alt="Green Terracotta"/>`;
+            Tab3Index3 = parseInt(Math.random() * 8) + 1;
+            Tab3SetGreenBar();
+        }
+        const Tab3ConvertIndex3 = function(e){
+            return [null,1,2,3,4,5,4,3,2][e] || null;
+        }
+        const Tab3SetGreenBar = function(){
+            for(let j=1;j<6;j++){
+                el(`${Tab3Index}${j}`).className = "Ac Bc";
+            }
+            el(`${Tab3Index}${Tab3ConvertIndex3(Tab3Index3)}`).className = "Ac Bb";
         }
         const Tab3 = function() {
             Tab0();
