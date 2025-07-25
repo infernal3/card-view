@@ -38,12 +38,21 @@
          * Original script
          */
         const el = e => document.getElementById(e);
+        var tab = 0;
         const app = document.createElement("div");
         const Tab1Helper = function() {
             this.classList.toggle("Bb");
             this.classList.toggle("Bc");
         }
+        const Tab2Helper = function() {
+            if(tab === 2 && Tab2Index == parseInt(this.textContent)){
+                this.classList.add("Bb");
+                this.classList.remove("Bc");
+                Tab2Index++;
+            }
+        }
         const Tab0 = function() { // reset button
+            tab = 0;
             for(let i=0;i<6;i++){
                 for(let j=0;j<9;j++){
                     el(`${i}${j}`).className = "Ac Ba";
@@ -53,6 +62,8 @@
             }
         }
         const Tab1 = function() {// Reference Hash: 6rXQR6wWB8I
+            Tab0();
+            tab = 1;
             for(let i=1;i<4;i++){
                 for(let j=2;j<7;j++){
                     el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
@@ -61,12 +72,13 @@
             }
         }
         const Tab2 = function() {
+            Tab0();
+            tab = 2;
+            Tab2Index = 1;
             let arr=[],temp=[0,1,2,3,4,5,6,7,8,9,10,11,12,13];
             while(temp.length>0){
                 arr.push(temp.splice(Math.random()*temp.length,1)[0]);
-                console.log(arr);
             }
-            console.log(arr);
             let k=0;
             for(let i=2;i<4;i++){
                 for(let j=1;j<8;j++){
