@@ -16,22 +16,31 @@
         -webkit-user-select:none;
       }
       div.Ba{
-        background:#474F52; /*Default*/
+        background:#474F52; /*Tab Zero Defaults*/
       }
       div.Bb{
-        background:#80C71F; /*Lime*/
+        background:#80C71F; /*Default Green Color*/
       }
       div.Bc{
-        background:#B02E26; /*Red*/
+        background:#B02E26; /*Default Red Color*/
       }
       div.Bd{
-        background:#5E7C16; /*Green*/
+        background:#5E7C16; /*Terminal 4 - Shade 4*/
       }
       div.Be{
-        background:#C74EBD; /*MelodyBar*/
+        background:#C74EBD; /*Terminal 3 - Marking Bar*/
       }
       div.Bf{
-        background:#F0F0F0; /*MelodyInactive*/
+        background:#F0F0F0; /*Terminal 3 - Inactive Row*/
+      }
+      div.Bg{
+        background:#F9801D; /*Terminal 4 - Shade 2*/
+      }
+      div.Bh{
+        background:#FED83D; /*Terminal 4 - Shade 3*/
+      }
+      div.Bi{
+        background:#3C44AA; /*Terminal 4 - Shade 5*/
       }
       div.Ca{
         padding-top:17px;
@@ -53,8 +62,8 @@
         }
         const Tab2Helper = function() {
             if(tab === 2 && Tab2Index == parseInt(this.textContent)){
-                this.classList.add("Bb");
                 this.classList.remove("Bc");
+                this.classList.add("Bb");
                 Tab2Index++;
             }
         }
@@ -63,6 +72,17 @@
                 Tab3Index++;
                 if(Tab3Index < 5) Tab3SetRedBar();
                 else Tab0();
+            }
+        }
+        const Tab4Helper = function() {
+            if(tab === 4){
+                let arr = ["Bc", "Bg", "Bh", "Bd", "Bi", "Bc"];
+                for(int i=0;i<5;i++){
+                    if(this.classList.contains(arr[i])) {
+                        this.classList.remove(arr[i]);
+                        this.classList.add(arr[i+1]);
+                    }
+                }
             }
         }
         const Tab0 = function() { // reset button
@@ -141,6 +161,17 @@
             Tab3Index = 1;
             Tab3SetRedBar();
         }
+        const Tab4 = function() {
+            Tab0();
+            tab = 4;
+            let arr = ["c", "g", "h", "d", "i"];
+            for(let i=1;i<4;i++){
+                for(let j=3;j<6;j++){
+                    el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
+                    el(`${i}${j}`).addEventListener("click",Tab4Helper);
+                }
+            }
+        }
         app.id="root";
         for(let i=0;i<6;i++){
             let str = '<div class="Ab">';
@@ -157,11 +188,13 @@
             <button id="tab1">Terminal 1</button>
             <button id="tab2">Terminal 2</button>
             <button id="tab3">Terminal 3</button>
+            <button id="tab4">Terminal 4</button>
             `;
             el("tab0").addEventListener("click",()=>{Tab0();});
             el("tab1").addEventListener("click",()=>{Tab1();});
             el("tab2").addEventListener("click",()=>{Tab2();});
             el("tab3").addEventListener("click",()=>{Tab3();});
+            el("tab4").addEventListener("click",()=>{Tab4();});
         });
       window.setInterval(()=>{
           if(tab === 3){
