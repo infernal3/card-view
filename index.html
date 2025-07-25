@@ -201,7 +201,7 @@
             }
             app.innerHTML += str + "</div>";
         }
-        app.innerHTML += '<div id="panel"></div>';
+        app.innerHTML = '<h1>Terminals Simulator (Card View)</h1><div id="panel"></div>' + app.innerHTML;
         window.addEventListener("load",e=>{
             document.body.append(app);
             el("panel").innerHTML += `
@@ -215,7 +215,7 @@
             el("tab1").addEventListener("click",()=>{Tab1();});
             el("tab2").addEventListener("click",()=>{Tab2();});
             el("tab3").addEventListener("click",()=>{Tab3();});
-            el("tab4").addEventListener("mouseup",()=>{Tab4();});
+            el("tab4").addEventListener("click",()=>{Tab4();});
         });
       window.setInterval(()=>{
           if(tab === 3){
