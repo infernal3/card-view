@@ -104,15 +104,18 @@
             }
         }
         const Tab3SetRedBar = function() {
-            Tab0();
             for(let i=1;i<5;i++){
                 for(let j=1;j<6;j++){
                     el(`${i}${j}`).className = "Ac Bf";
                 }
             }
             Tab3Index2 = parseInt(Math.random() * 5) + 1;
-            el(`0${Tab3Index2}`).className = "Ac Be";
-            el(`5${Tab3Index2}`).className = "Ac Be";
+            for(let i=0;i<6;i+=5){
+                for(let j=1;j<6;j++){
+                    el(`${i}${j}`).className = "Ac Ba";
+                }
+                el(`${i}${Tab3Index2}`).className = "Ac Be";
+            }
             for(let i=1;i<5;i++){
                 el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
                 el(`${i}7`).removeEventListener("click",Tab3Helper);
@@ -132,6 +135,7 @@
             el(`${Tab3Index}${Tab3ConvertIndex3(Tab3Index3)}`).className = "Ac Bb";
         }
         const Tab3 = function() {
+            Tab0();
             tab = 3;
             Tab3Index = 1;
             Tab3SetRedBar();
