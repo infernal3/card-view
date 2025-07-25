@@ -74,13 +74,18 @@
                 else Tab0();
             }
         }
-        const Tab4Helper = function() {
+        const Tab4Helper = function(e) {
             if(tab === 4){
                 let arr = ["Bc", "Bg", "Bh", "Bd", "Bi", "Bc"];
                 for(let i=0;i<5;i++){
                     if(this.classList.contains(arr[i])) {
-                        this.classList.remove(arr[i]);
-                        this.classList.add(arr[i+1]);
+                        if(e.button == 0){
+                            this.classList.remove(arr[i]);
+                            this.classList.add(arr[i+1]);
+                        } else if (e.button == 2){
+                            this.classList.remove(arr[i]);
+                            this.classList.add(arr[i < 1 ? 4 : i-1]);
+                        }
                         return;
                     }
                 }
@@ -91,8 +96,6 @@
             for(let i=0;i<6;i++){
                 for(let j=0;j<9;j++){
                     el(`${i}${j}`).className = "Ac Ba";
-                    el(`${i}${j}`).removeEventListener("click",Tab1Helper);
-                    el(`${i}${j}`).removeEventListener("click",Tab2Helper);
                     el(`${i}${j}`).textContent = "";
                 }
             }
@@ -169,7 +172,7 @@
             for(let i=1;i<4;i++){
                 for(let j=3;j<6;j++){
                     el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
-                    el(`${i}${j}`).addEventListener("click",Tab4Helper);
+                    el(`${i}${j}`).addEventListener("click",e=>{Tab4Helper(e)});
                 }
             }
         }
