@@ -9,11 +9,25 @@
         display:table-cell;
         width:50px;
         height:34px;
-        background:#aaa;
         border: 1px solid #000;
         text-align:center;
         padding-top:17px;
         font-size:14px;
+      }
+      div.Ba{
+        background:#474F52; /*Default*/
+      }
+      div.Bb{
+        background:#80C71F; /*Lime*/
+      }
+      div.Bc{
+        background:#B02E26; /*Red*/
+      }
+      div.Bd{
+        background:#5E7C16; /*Green*/
+      }
+      div.Be{
+        background:#C74EBD; /*MelodyBar*/
       }
     </style>
     <script defer>
@@ -22,15 +36,31 @@
          */
         const el = e => document.getElementById(e);
         const app = document.createElement("div");
+        const Tab1 = function() {// Reference Video Hash: 6rXQR6wWB8I
+            for(let i=2;i<7;i++){
+                for(let j=1;j<4;j++){
+                    el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
+                    el(`${i}${j}`).addEventListener("click",e=>{
+                        this.classList.toggle("Bb");
+                        this.classList.toggle("Bc");
+                    });
+                }
+            }
+        }
         app.id="root";
         for(let i=0;i<6;i++){
             let str = '<div class="Ab">';
             for(let j=0;j<9;j++){
-                str += `<div class="Ac" id="r${i}c${j}">(${i}, ${j})</div>`
+                str += `<div class="Ac Ba" id="${i}${j}">(${i}, ${j})</div>`
             }
             app.innerHTML += str + "</div>";
         }
-        window.addEventListener("load",e=>{document.body.append(app);});
+        app.innerHTML += '<div id="panel"></div>';
+        window.addEventListener("load",e=>{
+            document.body.append(app);
+            el("panel").innerHTML += `<button id="tab1">Terminals</button>`;
+            el("tab1").addEventListener("click",()=>{Tab1();})
+        });
     </script>
   </head>
 </html>
