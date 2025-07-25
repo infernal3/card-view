@@ -104,6 +104,10 @@
             Tab3Index2 = parseInt(Math.random() * 5) + 1;
             el(`0${Tab3Index2}`).className = "Ac Be";
             el(`5${Tab3Index2}`).className = "Ac Be";
+            for(let i=2;i<6;i++){
+                el(`${i}7`).innerHTML = `<img width=50 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
+            }
+            el(`${Tab3Index}7`).innerHTML = `<img width=50 src="./TerracottaGreen.webp" alt="Green Terracotta"/>`;
         }
         const Tab3 = function() {
             Tab0();
@@ -127,7 +131,6 @@
             <button id="tab1">Terminal 1</button>
             <button id="tab2">Terminal 2</button>
             <button id="tab3">Terminal 3</button>
-            <img width=50 src="/RedTerracotta.webp" alt="Red Terracotta"/>
             `;
             el("tab0").addEventListener("click",()=>{Tab0();});
             el("tab1").addEventListener("click",()=>{Tab1();});
