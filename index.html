@@ -46,14 +46,22 @@
         var tab = 0;
         const app = document.createElement("div");
         const Tab1Helper = function() {
-            this.classList.toggle("Bb");
-            this.classList.toggle("Bc");
+            if(tab === 1){
+                this.classList.toggle("Bb");
+                this.classList.toggle("Bc");
+            }
         }
         const Tab2Helper = function() {
             if(tab === 2 && Tab2Index == parseInt(this.textContent)){
                 this.classList.add("Bb");
                 this.classList.remove("Bc");
                 Tab2Index++;
+            }
+        }
+        const Tab3Helper = function() {
+            if(tab === 3 && Tab3ConvertIndex3(Tab3Index3) == Tab3Index2){
+                Tab3Index++;
+                if(Tab3Index < 5) Tab3SetRedBar();
             }
         }
         const Tab0 = function() { // reset button
@@ -106,8 +114,10 @@
             el(`5${Tab3Index2}`).className = "Ac Be";
             for(let i=1;i<5;i++){
                 el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
+                el(`${i}7`).removeEventListener("click",Tab3Helper);
             }
             el(`${Tab3Index}7`).innerHTML = `<img width=44 src="./TerracottaGreen.webp" alt="Green Terracotta"/>`;
+            el(`${Tab3Index}7`).addEventListener("click",Tab3Helper);
             Tab3Index3 = parseInt(Math.random() * 8) + 1;
             Tab3SetGreenBar();
         }
@@ -148,6 +158,12 @@
             el("tab2").addEventListener("click",()=>{Tab2();});
             el("tab3").addEventListener("click",()=>{Tab3();});
         });
+      window.setInterval(()=>{
+          if(tab === 3){
+              Tab3Index3 = Tab3Index3 > 7 ? 1 : Tab3Index3 + 1;
+              Tab3SetGreenBar();
+          }
+      },250);
     </script>
   </head>
 </html>
