@@ -44,7 +44,6 @@
             for(let j=2;j<7;j++){
                 for(let i=1;i<4;i++){
                     el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
-                    el(`${i}${j}`).removeEventListener("click",Tab1Helper);
                     el(`${i}${j}`).addEventListener("click",Tab1Helper);
                 }
             }
