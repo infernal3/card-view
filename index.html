@@ -79,7 +79,6 @@
         }
         const Tab4Helper = function(e) {
             if(tab === 4){
-                console.log("Term 4 Button ID: "+e.button);
                 let arr = ["Bc", "Bg", "Bh", "Bd", "Bi", "Bc"];
                 for(let i=0;i<5;i++){
                     if(this.classList.contains(arr[i])) {
@@ -90,6 +89,19 @@
                             this.classList.remove(arr[i]);
                             this.classList.add(arr[i < 1 ? 4 : i-1]);
                         }
+                        return;
+                    }
+                }
+            }
+        }
+        const Tab4Helper2 = function(e) {
+            e.preventDefault();
+            if(tab === 4){
+                let arr = ["Bc", "Bg", "Bh", "Bd", "Bi", "Bc"];
+                for(let i=0;i<5;i++){
+                    if(this.classList.contains(arr[i])) {
+                        this.classList.remove(arr[i]);
+                        this.classList.add(arr[i < 1 ? 4 : i-1]);
                         return;
                     }
                 }
@@ -177,7 +189,7 @@
                 for(let j=3;j<6;j++){
                     el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
                     el(`${i}${j}`).addEventListener("click",Tab4Helper);
-                    el(`${i}${j}`).addEventListener("contextmenu",PreventDefault);
+                    el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2);
                 }
             }
         }
