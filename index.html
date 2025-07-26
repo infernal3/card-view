@@ -16,35 +16,41 @@
         -webkit-user-select:none;
       }
       div.Ba{
-        background:#474F52; /*Tab Zero Defaults*/
+        background:#474F52;
       }
       div.Bb{
-        background:#80C71F; /*Default Green Color*/
+        background:#80C71F;
       }
       div.Bc{
-        background:#B02E26; /*Default Red Color*/
+        background:#B02E26;
       }
       div.Bd{
-        background:#5E7C16; /*Terminal 4 - Shade 4*/
+        background:#5E7C16;
       }
       div.Be{
-        background:#C74EBD; /*Terminal 3 - Marking Bar*/
+        background:#C74EBD;
       }
       div.Bf{
-        background:#F0F0F0; /*Terminal 3 - Inactive Row*/
+        background:#F0F0F0;
       }
       div.Bg{
-        background:#F9801D; /*Terminal 4 - Shade 2*/
+        background:#F9801D;
       }
       div.Bh{
-        background:#FED83D; /*Terminal 4 - Shade 3*/
+        background:#FED83D;
       }
       div.Bi{
-        background:#3C44AA; /*Terminal 4 - Shade 5*/
+        background:#3C44AA;
+      }
+      div.Bj{
+        background:#9D9D97;
       }
       div.Ca{
         padding-top:17px;
         height: 33px !important;
+      }
+      div.Cb{
+        padding-top:2px;
       }
     </style>
     <script defer>
@@ -161,6 +167,7 @@
                 SetClassOf(i, Tab3Index2, "Ac Be");
             }
             for(let i=1;i<5;i++){
+                SetClassOf(i, 7, "Ac Bj Cb");
                 el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
                 el(`${i}7`).removeEventListener("click",Tab3Helper);
             }
@@ -192,7 +199,7 @@
                 for(let j=3;j<6;j++){
                     SetClassOf(i, j, "Ac B" + arr[parseInt(Math.random() * 5)]);
                     el(`${i}${j}`).addEventListener("click",Tab4Helper);
-                    el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2);
+                    el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2); // Most browsers bind this event to right-click
                 }
             }
         }
