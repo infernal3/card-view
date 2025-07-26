@@ -16,44 +16,53 @@
         -webkit-user-select:none;
       }
       div.Ba{
-        background:#474F52; /*Tab Zero Defaults*/
+        background:#474F52;
       }
       div.Bb{
-        background:#80C71F; /*Default Green Color*/
+        background:#80C71F;
       }
       div.Bc{
-        background:#B02E26; /*Default Red Color*/
+        background:#B02E26;
       }
       div.Bd{
-        background:#5E7C16; /*Terminal 4 - Shade 4*/
+        background:#5E7C16;
       }
       div.Be{
-        background:#C74EBD; /*Terminal 3 - Marking Bar*/
+        background:#C74EBD;
       }
       div.Bf{
-        background:#F0F0F0; /*Terminal 3 - Inactive Row*/
+        background:#F0F0F0;
       }
       div.Bg{
-        background:#F9801D; /*Terminal 4 - Shade 2*/
+        background:#F9801D;
       }
       div.Bh{
-        background:#FED83D; /*Terminal 4 - Shade 3*/
+        background:#FED83D;
       }
       div.Bi{
-        background:#3C44AA; /*Terminal 4 - Shade 5*/
+        background:#3C44AA;
+      }
+      div.Bj{
+        background:#9D9D97;
       }
       div.Ca{
         padding-top:17px;
         height: 33px !important;
       }
+      div.Cb{
+        padding-top:2px;
+      }
     </style>
     <script defer>
         /**
-         * Original script
+         * Original script by infernal3
          */
         const el = e => document.getElementById(e);
         var tab = 0;
         const app = document.createElement("div");
+        const SetClassOf = function(x, y, newClass) {
+            el(`${x}${y}`).className = newClass;
+        }
         const PreventDefault = function(e) {
             e.preventDefault();
         }
@@ -107,21 +116,21 @@
                 }
             }
         }
-        const Tab0 = function() { // reset button
+        const Tab0 = function() {
             tab = 0;
             for(let i=0;i<6;i++){
                 for(let j=0;j<9;j++){
-                    el(`${i}${j}`).className = "Ac Ba";
+                    SetClassOf(i, j, "Ac Ba");
                     el(`${i}${j}`).textContent = "";
                 }
             }
         }
-        const Tab1 = function() {// Reference Hash: 6rXQR6wWB8I
+        const Tab1 = function() {
             Tab0();
             tab = 1;
             for(let i=1;i<4;i++){
                 for(let j=2;j<7;j++){
-                    el(`${i}${j}`).className = Math.random() < 0.25 ? "Ac Bb" : "Ac Bc";
+                    SetClassOf(i, j, Math.random() < 0.25 ? "Ac Bb" : "Ac Bc");
                     el(`${i}${j}`).addEventListener("click",Tab1Helper);
                 }
             }
@@ -137,7 +146,7 @@
             let k=0;
             for(let i=2;i<4;i++){
                 for(let j=1;j<8;j++){
-                    el(`${i}${j}`).className = "Ac Bc Ca";
+                    SetClassOf(i, j, "Ac Bc Ca");
                     el(`${i}${j}`).textContent = arr[k]+1;
                     el(`${i}${j}`).addEventListener("click",Tab2Helper);
                     k++;
@@ -147,17 +156,18 @@
         const Tab3SetRedBar = function() {
             for(let i=1;i<5;i++){
                 for(let j=1;j<6;j++){
-                    el(`${i}${j}`).className = "Ac Bf";
+                    SetClassOf(i, j, "Ac Bf");
                 }
             }
             Tab3Index2 = parseInt(Math.random() * 5) + 1;
             for(let i=0;i<6;i+=5){
                 for(let j=1;j<6;j++){
-                    el(`${i}${j}`).className = "Ac Ba";
+                    SetClassOf(i, j, "Ac Ba");
                 }
-                el(`${i}${Tab3Index2}`).className = "Ac Be";
+                SetClassOf(i, Tab3Index2, "Ac Be");
             }
             for(let i=1;i<5;i++){
+                SetClassOf(i, 7, "Ac Bj Cb");
                 el(`${i}7`).innerHTML = `<img width=44 src="./TerracottaRed.webp" alt="Red Terracotta"/>`;
                 el(`${i}7`).removeEventListener("click",Tab3Helper);
             }
@@ -171,9 +181,9 @@
         }
         const Tab3SetGreenBar = function(){
             for(let j=1;j<6;j++){
-                el(`${Tab3Index}${j}`).className = "Ac Bc";
+                SetClassOf(Tab3Index, j, "Ac Bc");
             }
-            el(`${Tab3Index}${Tab3ConvertIndex3(Tab3Index3)}`).className = "Ac Bb";
+            SetClassOf(Tab3Index, Tab3ConvertIndex3(Tab3Index3), "Ac Bb");
         }
         const Tab3 = function() {
             Tab0();
@@ -187,9 +197,9 @@
             let arr = ["c", "g", "h", "d", "i"];
             for(let i=1;i<4;i++){
                 for(let j=3;j<6;j++){
-                    el(`${i}${j}`).className = "Ac B" + arr[parseInt(Math.random() * 5)];
+                    SetClassOf(i, j, "Ac B" + arr[parseInt(Math.random() * 5)]);
                     el(`${i}${j}`).addEventListener("click",Tab4Helper);
-                    el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2);
+                    el(`${i}${j}`).addEventListener("contextmenu",Tab4Helper2); // Most browsers bind this event to right-click
                 }
             }
         }
